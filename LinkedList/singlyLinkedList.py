@@ -33,7 +33,18 @@ class LinkedList:
                     break # means we found the Node with empty next value
                 lastNode = lastNode.next # lastNode should be the Node with empty next value
             lastNode.next = newNode # so we can assign the newNode as next value
-    
+
+    def insertNodeHead(self, newNode):
+        # assign the head node to a temporary so we do not break the list
+        # then assign the newNode to the head
+        # then assign temporary node to newNode.next
+        # delete the temporary node
+        temporaryHeadNode = self.head
+        self.head = newNode
+        self.head.next = temporaryHeadNode
+        
+        del temporaryHeadNode
+
     def printList(self):
         if self.head is None:
             print("List is Empty")
@@ -61,5 +72,8 @@ linkedList.insertNodeEnd(secondNode)
 
 thirdNode = Node("Matthew")
 linkedList.insertNodeEnd(thirdNode)
+
+forthNode = Node("Shreya")
+linkedList.insertNodeHead(forthNode)
 
 linkedList.printList()
