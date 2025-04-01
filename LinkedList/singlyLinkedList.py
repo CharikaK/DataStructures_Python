@@ -14,7 +14,7 @@ class LinkedList:
         self.head = None
 
     # function insertNode
-    def insertNode(self, newNode):
+    def insertNodeEnd(self, newNode):
         # headNode is John->None(pointing to)
         if self.head is None:
             self.head = newNode
@@ -54,12 +54,12 @@ firstNode = Node("John")
 
 # Create LinkedList
 linkedList = LinkedList()
-linkedList.insertNode(firstNode)
+linkedList.insertNodeEnd(firstNode)
 
 secondNode = Node("Ben")
-linkedList.insertNode(secondNode)
+linkedList.insertNodeEnd(secondNode)
 
 thirdNode = Node("Matthew")
-linkedList.insertNode(thirdNode)
+linkedList.insertNodeEnd(thirdNode)
 
 linkedList.printList()
