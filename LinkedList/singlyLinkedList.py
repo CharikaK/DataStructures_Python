@@ -90,6 +90,26 @@ class LinkedList:
         # So now we make our previous node to the last node's next as None(unlink the last node)
         previousNode.next = None # Matthew should be gone now
 
+    def deleteNodeAt(self, position):
+        currentPosition = 0
+        currentNode = self.head
+
+        while True:
+            # Assume we are removing Ben 2
+            # Ben 2 position is 3
+            # previous node is Ben
+            # current node is Ben2 (which we are going to delete)
+            # currentnode.next is Matthew
+            
+            if currentPosition == position:
+                previousNode.next = currentNode.next
+                currentNode.next = None
+                break
+            previousNode = currentNode
+            currentNode = currentNode.next
+            currentPosition += 1
+
+
     def printList(self):
         if self.head is None:
             print("List is Empty")
@@ -125,5 +145,8 @@ linkedList.insertNodeHead(forthNode)
 positionNode = Node("Ben 2")
 linkedList.insertNodeAt(positionNode, 3) # try with position < 0 , large position value 
 
-linkedList.deleteEnd()
+# uncomment below to test deleteEnd
+#linkedList.deleteEnd()
+
+linkedList.deleteNodeAt(3)
 linkedList.printList()
