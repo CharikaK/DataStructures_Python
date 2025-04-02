@@ -79,6 +79,16 @@ class LinkedList:
             currentNode = currentNode.next
             currentPosition += 1
 
+    def deleteEnd(self):
+        # this is to make previousNode.next to point to None
+        lastNode = self.head
+        while lastNode.next is not None:
+            previousNode = lastNode
+            lastNode = previousNode.next
+
+        # Soon the lastNode.next is None; which means that is the endNode
+        # So now we make our previous node to the last node's next as None(unlink the last node)
+        previousNode.next = None # Matthew should be gone now
 
     def printList(self):
         if self.head is None:
@@ -113,6 +123,7 @@ linkedList.insertNodeHead(forthNode)
 
 # adding a Node into a position
 positionNode = Node("Ben 2")
-linkedList.insertNodeAt(positionNode, 10)
+linkedList.insertNodeAt(positionNode, 3) # try with position < 0 , large position value 
 
-#linkedList.printList()
+linkedList.deleteEnd()
+linkedList.printList()
