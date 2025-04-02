@@ -22,6 +22,13 @@ class LinkedList:
             currentNode = currentNode.next
         return length
     
+    # function to check the List is empty
+    def isListEmpty(self):        
+        if self.head is None:
+            return True
+        else:            
+            return False
+
     # function insertNode
     def insertNodeEnd(self, newNode):
         # headNode is John->None(pointing to)
@@ -79,6 +86,16 @@ class LinkedList:
             currentNode = currentNode.next
             currentPosition += 1
 
+    def deleteHead(self):
+        if self.isListEmpty() is False:
+            previousNode = self.head
+            
+            
+            self.head = self.head.next
+            previousNode.next = None
+        else:
+            print("Linked list is empty")
+
     def deleteEnd(self):
         # this is to make previousNode.next to point to None
         lastNode = self.head
@@ -91,6 +108,10 @@ class LinkedList:
         previousNode.next = None # Matthew should be gone now
 
     def deleteNodeAt(self, position):
+        if position < 0 or position <= self.listLength():
+            print("Invalid Position")
+            return
+        
         currentPosition = 0
         currentNode = self.head
 
@@ -122,14 +143,15 @@ class LinkedList:
             print(currentNode.data)
             currentNode = currentNode.next
 
-
-
 # Create the first Node
 # Node => data, next
 firstNode = Node("John")
 
 # Create LinkedList
 linkedList = LinkedList()
+
+
+
 linkedList.insertNodeEnd(firstNode)
 
 secondNode = Node("Ben")
@@ -139,14 +161,19 @@ thirdNode = Node("Matthew")
 linkedList.insertNodeEnd(thirdNode)
 
 forthNode = Node("Shreya")
-linkedList.insertNodeHead(forthNode)
+linkedList.insertNodeHead(forthNode) # Shreya becomes head
 
 # adding a Node into a position
 positionNode = Node("Ben 2")
 linkedList.insertNodeAt(positionNode, 3) # try with position < 0 , large position value 
 
-# uncomment below to test deleteEnd
-#linkedList.deleteEnd()
+linkedList.printList() # Shreya->John->Ben->Ben 2->Matthew
 
-linkedList.deleteNodeAt(3)
-linkedList.printList()
+# uncomment below to test deleteEnd
+#linkedList.deleteEnd() # remove Matthew
+
+#linkedList.deleteNodeAt(3)
+linkedList.deleteHead() # remove Shreya
+print("****** Removing head ******")
+linkedList.printList() # John->Ben->Ben 2->Matthew
+
