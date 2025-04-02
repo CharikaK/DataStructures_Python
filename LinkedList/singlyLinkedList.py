@@ -46,7 +46,10 @@ class LinkedList:
         del temporaryHeadNode
 
     def insertNodeAt(self, newNode, position):
-        # this function will be used only if the Linked list has more nodes between Head and the Tail
+        # if the new insertion is to the position 0; that means calling insertNodeHead
+        if position is 0:
+            self.insertNodeHead(newNode)
+            return # return from the function
 
         # traveling trough nodes > mark the currentNode + mark their positions
         # record previousNode and currentNode until we find the position to insert the newNode
@@ -57,7 +60,7 @@ class LinkedList:
             if currentPosition == position:
                 previousNode.next = newNode
                 newNode.next = currentNode
-                break
+                break # break the loop - remember!
             previousNode = currentNode
             currentNode = currentNode.next
             currentPosition += 1
