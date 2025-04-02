@@ -45,6 +45,26 @@ class LinkedList:
         
         del temporaryHeadNode
 
+    def insertNodeAt(self, newNode, position):
+        # this function will be used only if the Linked list has more nodes between Head and the Tail
+
+        # traveling trough nodes > mark the currentNode + mark their positions
+        # record previousNode and currentNode until we find the position to insert the newNode
+        # assign it into a previousNode
+        currentNode = self.head
+        currentPosition = 0
+        while True:
+            if currentPosition == position:
+                previousNode.next = newNode
+                newNode.next = currentNode
+                break
+            previousNode = currentNode
+            currentNode = currentNode.next
+            currentPosition += 1
+            
+
+
+
     def printList(self):
         if self.head is None:
             print("List is Empty")
@@ -75,5 +95,9 @@ linkedList.insertNodeEnd(thirdNode)
 
 forthNode = Node("Shreya")
 linkedList.insertNodeHead(forthNode)
+
+# adding a Node into a position
+positionNode = Node("Ben 2")
+linkedList.insertNodeAt(positionNode, 3)
 
 linkedList.printList()
