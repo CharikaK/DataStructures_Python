@@ -13,6 +13,15 @@ class LinkedList:
     def __init__(self):
         self.head = None
 
+    # function to decide the length of the LinkedList
+    def listLength(self):
+        currentNode = self.head
+        length = 0
+        while currentNode.next is not None:
+            length += 1
+            currentNode = currentNode.next
+        return length
+    
     # function insertNode
     def insertNodeEnd(self, newNode):
         # headNode is John->None(pointing to)
@@ -46,8 +55,13 @@ class LinkedList:
         del temporaryHeadNode
 
     def insertNodeAt(self, newNode, position):
+        # if the position is invalid
+        if position < 0 or position > self.listLength():
+            print("Invalid position")
+            return
+
         # if the new insertion is to the position 0; that means calling insertNodeHead
-        if position is 0:
+        if position == 0:
             self.insertNodeHead(newNode)
             return # return from the function
 
@@ -64,8 +78,6 @@ class LinkedList:
             previousNode = currentNode
             currentNode = currentNode.next
             currentPosition += 1
-            
-
 
 
     def printList(self):
@@ -101,6 +113,6 @@ linkedList.insertNodeHead(forthNode)
 
 # adding a Node into a position
 positionNode = Node("Ben 2")
-linkedList.insertNodeAt(positionNode, 3)
+linkedList.insertNodeAt(positionNode, 10)
 
-linkedList.printList()
+#linkedList.printList()
